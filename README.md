@@ -1,0 +1,1 @@
+### Sample base laravel app by [goloce]
