@@ -8,7 +8,7 @@ class PagesController extends Request
 {
     public function home()
     {
-        return view('home', ['product' => 1]);
+        return view('home');
     }
 
     public function about()
