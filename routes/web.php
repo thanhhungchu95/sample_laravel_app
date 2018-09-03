@@ -17,3 +17,5 @@ Route::get('/contact', 'TicketsController@create');
 Route::post('/contact', 'TicketsController@store');
 Route::get('/tickets', 'TicketsController@index');
 Route::get('/tickets/{slug?}', 'TicketsController@show');
+Route::get('/tickets/{slug?}/edit', 'TicketsController@edit');
+Route::patch('/tickets/{slug?}', 'TicketsController@update');
