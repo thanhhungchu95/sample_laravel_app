@@ -25,9 +25,15 @@ class TicketsController extends Controller
         Ticket::create([
             'title' => $request->get('title'),
             'content' => $request->get('content'),
-            'slug' => $slug
+            'slug' => $slug,
         ]);
 
         return redirect('/contact')->with('status', 'Your ticket has been created! It\'s unique id is: ' . $slug);
+    }
+
+    public function show($slug)
+    {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        return view('tickets.show', compact('ticket'));
     }
 }
