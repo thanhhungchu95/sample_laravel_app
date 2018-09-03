@@ -34,6 +34,32 @@ class TicketsController extends Controller
     public function show($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
+
         return view('tickets.show', compact('ticket'));
+    }
+
+    public function edit($slug)
+    {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+
+        return view('tickets.edit', compact('ticket'));
+    }
+
+    public function update($slug, TicketFormRequest $request)
+    {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->title = $request->get('title');
+        $ticket->content = $request->get('content');
+        if ($request->get('status') != null) {
+            $ticket->status = 0;
+        } else {
+            $ticket->status = 1;
+        }
+        $ticket->save();
+
+        return redirect(action('TicketsController@show', $ticket->slug))->with(
+            'status',
+            'The ticket ' . $slug . ' has been updated!'
+        );
     }
 }
