@@ -13,8 +13,14 @@
                     <strong>Status</strong>: {!! $ticket->status ? 'Pending' : 'Answered' !!}
                 </p>
             </div>
-            <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-info">Edit</a>
-            <a href="#" class="btn btn-info">Delete</a>
+            <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="pull-left btn btn-info">Edit</a>
+            {!! Form::model($ticket, ['method' => 'delete', 'url' => '/tickets/' . $ticket->slug, 'class' => 'pull-left']) !!}
+                <div>
+                    {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-warning']) !!}
+                </div>
+            {!! Form::close() !!}
+
+            <div class="clearfix"></div>
         </div>
     </div>
 @endsection

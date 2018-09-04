@@ -8,6 +8,9 @@
             <div class="panel-heading">
                 <h2> Tickets </h2>
             </div>
+
+            @include('shared.status')
+
             @if ($tickets->isEmpty())
                 <p> There is no ticket. </p>
             @else
