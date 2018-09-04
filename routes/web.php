@@ -19,3 +19,4 @@ Route::get('/tickets', 'TicketsController@index');
 Route::get('/tickets/{slug?}', 'TicketsController@show');
 Route::get('/tickets/{slug?}/edit', 'TicketsController@edit');
 Route::patch('/tickets/{slug?}', 'TicketsController@update');
+Route::delete('/tickets/{slug?}', 'TicketsController@destroy');
