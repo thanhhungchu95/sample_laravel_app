@@ -63,6 +63,7 @@ class TicketsController extends Controller
         } else {
             $ticket->status = 1;
         }
+
         $ticket->save();
 
         return redirect(action('TicketsController@show', $ticket->slug))->with(
